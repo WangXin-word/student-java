@@ -2,14 +2,12 @@ package com.example.student.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.example.student.dao.SysUserDao;
 import com.example.student.entity.SysUserEntity;
 import com.example.student.service.SysUserService;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Repository
 @RestController
@@ -34,9 +32,19 @@ public class SysUserController {
      * @param ipage
      * @return
      */
-    @GetMapping("/getUserList")
-    public Page getUserInfo(IPage<SysUserEntity> ipage){
+    @GetMapping("/getStudentList")
+    public Page getStudentInfo(IPage<SysUserEntity> ipage){
         return sysUserService.getStudentList(ipage);
+    }
+
+    /**
+     * 获取学校工作人员列表
+     * @param page
+     * @return
+     */
+    @GetMapping("/getSysPage")
+    public Page getSysList(@RequestParam("page") int page, @RequestParam("pageSize") int pageSize){
+        return sysUserService.getSysList(page,pageSize);
     }
 
 }

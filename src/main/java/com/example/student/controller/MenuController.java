@@ -1,18 +1,12 @@
 package com.example.student.controller;
 
-import com.example.student.dao.MenuDao;
-import com.example.student.entity.MenuEntity;
-import com.example.student.entity.SysUserEntity;
+import com.example.student.dto.MenuDto;
 import com.example.student.service.MenuService;
-import com.example.student.service.SysUserService;
-import com.example.student.utils.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
-import java.util.List;
 
 @Repository
 @RestController
@@ -27,8 +21,8 @@ public class MenuController {
      * 修改
      */
     @PostMapping("/update")
-    public Object update(@RequestBody MenuDao menuDao){
-        return menuService.update(menuDao);
+    public Object update(@RequestBody MenuDto menuDto){
+        return menuService.update(menuDto);
     }
     /**
      * 删除

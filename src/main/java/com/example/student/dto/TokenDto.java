@@ -1,16 +1,15 @@
-package com.example.student.dao;
+package com.example.student.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import java.sql.Time;
-
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ToString
-public class TokenDao {
+public class TokenDto {
     private Long id;
     private String name;
     private Long newDate;
+    private Long roleId;
 }

@@ -18,7 +18,7 @@ public class SysUserEntity {
     private String name;
 
     @TableField("role_id")
-    private String roleId;
+    private Long roleId;
 
     @TableField("password")
     private String password;
@@ -32,6 +32,7 @@ public class SysUserEntity {
 
     @TableField("dormitory_id")
     private Long dormitoryId;
+
 
     @TableField("create_time")
     private String createTime;

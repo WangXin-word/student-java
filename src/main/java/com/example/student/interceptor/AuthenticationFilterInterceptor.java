@@ -2,15 +2,12 @@ package com.example.student.interceptor;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
-import com.example.student.dao.SysUserDao;
-import com.example.student.dao.TokenDao;
-import com.example.student.entity.SysUserEntity;
+import com.example.student.dto.TokenDto;
 import com.example.student.utils.AESUtils;
 import com.example.student.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,7 +32,7 @@ public class AuthenticationFilterInterceptor implements HandlerInterceptor {
             log.info("token获取到的内容="+AesdecToken);
 
             String userInfo = redisUtil.get("userInfo");
-            TokenDao redisUserInfo = JSON.parseObject(userInfo, TokenDao.class);
+            TokenDto redisUserInfo = JSON.parseObject(userInfo, TokenDto.class);
             log.info("redisUserInfo ==" +redisUserInfo);
             Long userId = redisUserInfo.getId();
             if ((userId + "").equals(jsonObject.get("id").toString())){

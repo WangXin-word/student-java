@@ -1,8 +1,6 @@
 package com.example.student.controller;
 
-import com.example.student.dao.MenuDao;
 import com.example.student.service.IndexService;
-import com.example.student.service.MenuService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;

@@ -9,4 +9,5 @@ import java.util.List;
 public interface SysUserService {
     Object login(SysUserEntity sysUserEntity);
     Page getStudentList(IPage<SysUserEntity> ipage);
+    Page getSysList(int page,int pageSize);
 }

@@ -1,15 +1,13 @@
 package com.example.student.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.student.dao.MenuDao;
-import com.example.student.dao.TokenDao;
+import com.example.student.dto.MenuDto;
+import com.example.student.dto.TokenDto;
 import com.example.student.entity.*;
 import com.example.student.mapper.MenuMapper;
 import com.example.student.mapper.PowerMapper;
-import com.example.student.mapper.RoleMapper;
 import com.example.student.mapper.SysUserMapper;
 import com.example.student.service.MenuService;
 import com.example.student.utils.RedisUtil;
@@ -43,14 +41,14 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, MenuEntity> impleme
 
 
     @Override
-    public Object update(MenuDao menuDao) {
-        log.info("menuEntity"+menuDao);
+    public Object update(MenuDto menuDto) {
+        log.info("menuEntity"+ menuDto);
         try{
             MenuEntity menuEntity = new MenuEntity();
-            menuEntity.setId(menuDao.getId());
-            menuEntity.setName(menuDao.getName());
-            menuEntity.setMeta(menuDao.getMeta());
-            menuEntity.setSortMenu(menuDao.getSortMenu());
+            menuEntity.setId(menuDto.getId());
+            menuEntity.setName(menuDto.getName());
+            menuEntity.setMeta(menuDto.getMeta());
+            menuEntity.setSortMenu(menuDto.getSortMenu());
             menuMapper.updateById(menuEntity);
             return Result.success("success","菜单更新成功");
         }catch (Exception e){
@@ -70,7 +68,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, MenuEntity> impleme
     public List<MenuEntity> list() {
 //        拿到对应的角色
         String userInfo = redisUtil.get("userInfo");
-        TokenDao redisUserInfo = JSON.parseObject(userInfo, TokenDao.class);
+        TokenDto redisUserInfo = JSON.parseObject(userInfo, TokenDto.class);
         Long userId = redisUserInfo.getId();
         SysUserEntity sysUserEntitySql = sysUserMapper.selectById(userId);
 

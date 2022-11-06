@@ -6,14 +6,20 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data
-@TableName("dormitory")
-public class DormitoryEntity {
+@TableName("course")
+public class CourseEntity {
     //主键Id
     @TableId("id")
     private Long id;
 
-    @TableField("name")
-    private String name;
+    @TableField("teacher_id")
+    private Long teacherId;
+
+    @TableField("cname")
+    private String cname;
+
+    @TableField("year_course")
+    private String yearCourse;
 
     @TableField("create_time")
     private String createTime;

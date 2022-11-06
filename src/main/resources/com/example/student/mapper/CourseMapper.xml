@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.student.mapper.CourseMapper">
+    <select id="list" resultType="com.example.student.dto.UserCourseDto">
+        select u.name uName, c.id cId,
+               c.teacher_id teacherId,
+               c.cname cName,
+               c.year_course yearCourse,
+               c.create_time createTime,
+               c.update_time updateTime from course c, user u where c.teacher_id = u.id  limit #{page},#{pageSize}
+    </select>
+</mapper>
